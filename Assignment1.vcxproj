@@ -139,16 +139,16 @@
     <ClInclude Include="TransformNode.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resources\FreeVector-Crossed-Swords.jpg" />
     <Image Include="Resources\FreeVector-Crossed-Swords.png" />
-    <Image Include="Resources\stock-vector-vector-pattern-with-skulls-148761704.jpg" />
-    <Image Include="Resources\stock-vector-vector-pattern-with-skulls-148761704.png" />
     <Image Include="Resources\vector-wavy-rainbow-background.jpg" />
     <Image Include="Resources\wood-pattern-vector.png" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="Resources\a-team_intro.wav" />
-    <Media Include="Resources\dog.wav" />
+    <Media Include="Resources\ask_mr_hat.wav" />
+    <Media Include="Resources\life_moves_fast.wav" />
+    <Media Include="Resources\planet_apes_dirty_ape.wav" />
+    <Media Include="Resources\sharknado_throw_bombs.wav" />
+    <Media Include="Resources\smack.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

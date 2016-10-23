@@ -45,10 +45,11 @@ int main(int argc, char* argv)
 	/* Tiling sprite */
 	sf::Sprite backSprite;
 	backSprite.setTexture(background);
+	backSprite.setScale(1.25f, 1.25f);
 	// We tell the sprite that it's going to draw the cloud texture at the size of our window.
 	backSprite.setTextureRect(sf::IntRect(0, 0, window.getSize().x, window.getSize().y));
 
-
+	sf::IntRect backgroundRect = backSprite.getTextureRect();
 	//Windmill 1: Setting up the textures
 	windmill1Base.setTexture(&bases);
 	windmill1BladeNorth.setTexture(&blades, true);
@@ -178,11 +179,19 @@ int main(int argc, char* argv)
 	float secondTimer = 0.0f; // elapsed time per second.
 	float movementSpeed = 150.0f; // scrolling movement speed.
 
-	//sf::SoundBuffer buffer;
-	//buffer.loadFromFile("Resources/dog.wav");
-	//sf::Sound sound(buffer);
-	//sound.setLoop(true);
-	//sound.play();
+	sf::SoundBuffer askHand;
+	askHand.loadFromFile("Resources/ask_mr_hat.wav");
+	sf::SoundBuffer smack;
+	smack.loadFromFile("Resources/smack.wav");
+	sf::SoundBuffer dirtyApe;
+	dirtyApe.loadFromFile("Resources/planet_apes_dirty_ape.wav");
+	sf::SoundBuffer sharknado;
+	sharknado.loadFromFile("Resources/sharknado_throw_bombs.wav");
+	sf::SoundBuffer bueler;
+	bueler.loadFromFile("Resources/life_moves_fast.wav");
+	sf::Sound sound;
+	sound.setBuffer(askHand);
+	sound.play();
 
 	sf::Transform tranformWind1;
 	sf::Transform tranformWind2;
@@ -236,6 +245,7 @@ int main(int argc, char* argv)
 					key2 = false;
 					key3 = false;
 					key4OrA = false;
+
 				}
 				else if (evt.key.code == sf::Keyboard::Key::Num2 || evt.key.code == sf::Keyboard::Key::Numpad2)
 				{
@@ -275,6 +285,28 @@ int main(int argc, char* argv)
 				//Event when a key is released from being held
 			case sf::Event::KeyReleased:
 				keyHeld = false;
+				if (key1)
+				{
+					sound.setBuffer(sharknado);
+					sound.play();
+				}
+				else if (key2)
+				{
+					sound.setBuffer(bueler);
+					sound.play();
+				}
+				else if (key3)
+				{
+
+					sound.setBuffer(dirtyApe);
+					sound.play();
+				}
+				else if (key4OrA)
+				{
+					sound.setBuffer(smack);
+					sound.play();
+
+				}
 				break;
 
 
@@ -352,7 +384,7 @@ int main(int argc, char* argv)
 		secondTimer += deltaTIme;
 
 		//Setting up the scrolling background
-		sf::IntRect backgroundRect = backSprite.getTextureRect();
+		
 		sf::IntRect deltaRect = backgroundRect;
 		deltaRect.left = backgroundRect.left + (int)(movementSpeed * secondTimer);
 		backSprite.setTextureRect(deltaRect);
